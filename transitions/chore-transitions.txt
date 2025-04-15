@@ -1,0 +1,22 @@
+stateDiagram-v2
+    [*] --> new
+    new --> snoozed: snoozeChore()
+    snoozed --> new: autoResumeSnoozed()
+    
+    new --> submitted: submitCompletion()
+    submitted --> approval_pending: approveCompletion()
+    approval_pending --> completed: acknowledgeApproval()
+    
+    submitted --> denied_reset: denyCompletion('reset')
+    denied_reset --> new: submitCompletion()
+    
+    submitted --> denied_remove: denyCompletion('remove')
+    denied_remove --> [*]: acknowledgeDenial()
+    
+    new --> expired: checkExpirations()
+    expired --> extended: extendDeadline()
+    extended --> submitted: submitCompletion()
+    extended --> expired: checkExpirations()
+    
+    note left of new: Time-based transitions
+    expired --> [*]: 7d after expiration

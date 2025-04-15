@@ -1,0 +1,25 @@
+1. Core Chore Functions
+Parent Operations
+Function	Parameters							Description
+createChore()	name, pointValue, assignedTo[], dueDate, recurrenceRules	Creates new chore with optional recurrence
+editChore()	choreId, {name, pointValue, dueDate...}				Modifies editable fields
+deleteChore()	choreId, softDelete=true					Flags as deleted
+approveCompletion()	choreId, xpOverride=null				Moves to approval_pending
+denyCompletion()	choreId, denyType='reset', reason			Denies with reset/remove
+extendDeadline()	choreId, extraHours, reason				Grants grace period
+snoozeChore()	choreId, untilDate, reason					Temporary pause
+forceComplete()	choreId								Admin override
+
+Kid Operations
+Function	Parameters							Description
+submitCompletion()	choreId, proof={photos[]}				Submits for approval
+acknowledgeApproval()	choreId							Confirms XP award
+acknowledgeDenial()	choreId							Accepts denial
+requestHelp()	choreId, message						Flags for parent attention
+
+System Operations
+Function	Description
+generateRecurrences()								Cron job creates next instances
+checkExpirations()								Updates expired chores
+applyPenalties()								Processes penalty XP deductions
+autoResumeSnoozed()								Reactivates past snooze dates
