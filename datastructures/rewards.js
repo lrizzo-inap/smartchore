@@ -4,18 +4,24 @@
   description: String,
   cost: {
     xp: Number,
-    cooldown_hours: Number
+    cooldown_days: Number // 0 = no cooldown
   },
-  inventory: {
-    stock: Number,       // -1 for unlimited
-    claims_this_week: Number
-  },
-  restrictions: {
-    min_level: Number,
-    max_per_user: Number
+  availability: {
+    is_repeatable: Boolean,
+    max_claims: Number,  // Null = unlimited
+    assigned_to: [String] // Kid IDs (empty = all)
   },
   fulfillment: {
-    type: 'automatic'|'parent_approval',
-    instructions: String // "Show this QR code to Mom"
+    type: "automatic"|"parent_approval",
+    instructions: String
+  },
+  media: {
+    icon: "🍦",
+    preview_image: String // URL
+  },
+  meta: {
+    created_by: String,  // Parent ID
+    created_at: Date,
+    archived: Boolean
   }
 }

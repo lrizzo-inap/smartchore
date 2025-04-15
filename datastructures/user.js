@@ -1,6 +1,9 @@
 {
   user_id: String,
   type: 'kid'|'parent',
+  avatar: {
+    emoji: "🦊",       // From predefined set
+    color: "#FF8C00"   // Orange for fox
   xp: {
     balance: Number,
     lifetime_earned: Number,

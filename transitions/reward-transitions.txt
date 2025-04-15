@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> available
+    available --> claiming: Kid taps claim
+    claiming --> pending: Needs approval
+    claiming --> fulfilled: Auto-approve
+    pending --> fulfilled: Parent approves
+    pending --> available: Parent denies
+    fulfilled --> cooldown: If repeatable
+    cooldown --> available: Cooldown expires

@@ -1,0 +1,16 @@
+Core Functions
+Parent Functions
+Function		Parameters				Description
+createReward()		(name, xp_cost, is_repeatable)		Creates new reward
+assignReward()		(reward_id, kid_ids[])			Limits availability
+archiveReward()		(reward_id)				Soft-deletes reward
+
+Kid Functions
+Function		Parameters				Description
+claimReward()		(reward_id, kid_id)			Main claim flow
+cancelClaim()		(claim_id)				If pending approval
+
+System Functions
+Function							Description
+checkCooldowns()						Daily cron to reset availability
+renderRewardBadges()						Updates UI indicators
